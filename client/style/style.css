@@ -1,0 +1,17 @@
+.collection-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.material-icons, .collection-item {
+  cursor: pointer;
+}
+
+.material-icons {
+  margin-right: 5px;
+}
+
+.vote-box {
+  display: flex;
+  align-items: center;
+}

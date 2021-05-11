@@ -7,17 +7,13 @@ import query from '../queries/fetchSongs';
 class SongCreate extends Component {
   constructor (props) {
     super(props);
-    this.state = {
-      title: ''
-    };
+    this.state = { title: '' };
   }
 
   onSubmit(event) {
     event.preventDefault();
     this.props.mutate({
-      variables: {
-        title: this.state.title
-      },
+      variables: { title: this.state.title },
       refetchQueries: [{ query }]
     }).then(() => hashHistory.push('/'))
   }

@@ -1,3 +1,4 @@
+import './style/style.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-client';
@@ -7,10 +8,11 @@ import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import App from './components/App';
 import SongList from './components/SongList';
 import SongCreate from './components/SongCreate';
+import SongDetail from './components/SongDetail';
 
 // ApolloClient makes some convenient assumptions about how your back end is set up. It assumes that your back end is listening at /graphql for GraphQL requests, assumes your GraphQL server is listening at /graphql.
 const client = new ApolloClient({
-
+  dataIdFromObject: o => o.id
 });
 
 const Root = () => {
@@ -20,6 +22,8 @@ const Root = () => {
         <Route path="/" component={App}>
           <IndexRoute component={SongList} />
           <Route path="songs/new" component={SongCreate} />
+          <Route path="songs/:id" component={SongDetail} />
+          {/* so SongDetail component will receive id in props in the params property (from Router) */}
         </Route>
       </Router>
     </ApolloProvider>
